@@ -120,8 +120,8 @@ Func toUTF8($text)
 	  $c1 = StringMid($text, $i, 1)
 	  If $c1 >= 0xc0 Then ; Should be converted to UTF8, if it's not UTF8 already
 		 $c2 = $i+1 > $max ? 0x00 : StringMid($text, $i+1, 1)
-		 $c3 = $i+1 > $max ? 0x00 : StringMid($text, $i+2, 1)
-		 $c4 = $i+1 > $max ? 0x00 : StringMid($text, $i+3, 1)
+		 $c3 = $i+2 > $max ? 0x00 : StringMid($text, $i+2, 1)
+		 $c4 = $i+3 > $max ? 0x00 : StringMid($text, $i+3, 1)
 		 If $c1 >= 0xc0 And $c1 <= 0xdf Then ; looks like 2 bytes UTF8
 			If $c2 >= 0x80 And $c2 <= 0xbf Then ; yeah, almost sure it's UTF8 already
 			   $buf &= $c1 & $c2
